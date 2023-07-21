@@ -15,6 +15,7 @@ function animate(time) {
 
     if (!moved) {
       state.inert = project(state.inert, state.active)
+      clearFullRows()
       getNextActiveShape()
     }
 
@@ -31,3 +32,4 @@ import { moveDelay } from '../config.js'
 import { board } from '../board.js'
 import { state } from '../model/state.js'
 import { project } from '../model/project.js'
+import { clearFullRows } from './clear.js'

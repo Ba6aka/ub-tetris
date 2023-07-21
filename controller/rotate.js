@@ -1,21 +1,20 @@
 export { rotate }
 
 function rotate() {
-  if (state.active.variant === shapes[state.active.shapeCode].length - 1) {
-    state.active.variant = -1
-  }
-  
-  state.active.variant++
-  project(state.inert, state.active)
+  const { active, active: { type, variant, x, y } } = state
+  active.variant = (variant + 1) % shapes[type].length
 
-  if (!state.active.coords.every(({ x, y }) => state.inert[y][x] === 0 && x <= 9 && x > 0)) {
-    state.active.variant--
-    project(state.inert, state.active)
-  }
+  const desiredCoords = shapes[type][active.variant].flatMap((row, i) => row.map((cell, j) => {
+    return cell && { x: x + j, y: y + i }
+  })).filter(Boolean)
 
+  if (desiredCoords.every(({ x, y }) => state.inert[y]?.[x] === 0)) return 
+
+  if (move('right') || move('left')) return
+
+  active.variant = variant
 }
 
-
+import { move } from "./move.js"
 import { state } from "../model/state.js"
-import { project } from "../model/project.js"
 import { shapes } from "../model/shapes.js"

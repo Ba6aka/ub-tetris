@@ -26,7 +26,7 @@ function move(direction) {
 
 }
 
-// import { deleteFullRows } from './delete-full-rows.js'
+// import { clearFullRows } from './delete-full-rows.js'
 import { canMove } from './can-move.js'
 import { state } from "../model/state.js"
 import { updateInertCells } from './update-inert.js'

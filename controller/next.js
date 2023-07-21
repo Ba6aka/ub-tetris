@@ -1,13 +1,13 @@
 export { getNextActiveShape }
 
 function getNextActiveShape() {
-  const shapeCode = rnd(shapes.length)
+  const type = rnd(shapes.length)
 
   state.active = {
-    shapeCode,
+    type,
     y: 0,
-    x: (columnCount / 2 - shapes[shapeCode][0][0].length / 2) | 0,
-    variant: rnd(shapes[shapeCode].length),
+    x: (columnCount / 2 - shapes[type][0][0].length / 2) | 0,
+    variant: rnd(shapes[type].length),
     coords: [],
   }
 }

@@ -1,8 +1,8 @@
 export { project }
 
-function project(inertRows, { shapeCode, variant, x, y }) {
+function project(inertRows, { type, variant, x, y }) {
   const stateRowData = clone(inertRows)
-  const shapeData = shapes[shapeCode][variant]
+  const shapeData = shapes[type][variant]
 
   for (const i in shapeData) {
     const row = shapeData[i]
